@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package tutorial;
+
+message StudentLeader{
+	  int32 age = 1;
+}
+message Student{
+   //string age = 1;
+   //repeated int32 ages = 2;
+   StudentLeader math=1;
+   repeated  StudentLeader maths = 2;
+   bytes age = 3;
+   repeated int32 ssd = 4;
+   repeated string tyName = 5;
+}

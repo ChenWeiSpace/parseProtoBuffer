@@ -22,7 +22,9 @@ public:
 		Invalid,
 		Is_Int,
 		Is_Float,
-		Is_Double
+		Is_Double,
+		Is_String,
+		Is_Message
 	};
 	union FileValue
 	{
@@ -50,8 +52,11 @@ class AbstractMessage : public AbstractField
 public:
 	AbstractMessage();
 	~AbstractMessage();
+	typedef std::vector<google::protobuf::uint64> IntArray;
 
 	bool paresFromStream(google::protobuf::io::CodedInputStream* input);
+	bool readAsIntArray(google::protobuf::io::CodedInputStream* input, IntArray & valArray,int length);
+	bool readAsMessage(std::string mem, std::shared_ptr<AbstractMessage > & mesPtr);
 };
 typedef std::shared_ptr<AbstractMessage> AbstractMessagePtr;
 #endif // AbstractMessage_h__

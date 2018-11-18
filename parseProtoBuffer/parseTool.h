@@ -2,7 +2,7 @@
 #define parseTool_h__
 #include <memory>
 #include <iostream>
-class parseTool : std::enable_shared_from_this<parseTool>
+class parseTool : public std::enable_shared_from_this<parseTool>
 {
 public:
 	parseTool();
