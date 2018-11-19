@@ -1,0 +1,31 @@
+写入int32  -> WriteTag(field_number<<3|WIRETYPE_VARINT) -- WriteInt32NoTagToArray  -- WriteVarint32SignExtendedToArray -- WriteVarint64ToArray -> 8位编码
+读取int32  -> ReadPrimitive<int32,TYPE_INT32>   -- ReadVarint32(uint32*)8位编码读取方式||ReadVarint32FromArray  
+
+写入uint32 -> WriteTag(field_number<<3|WIRETYPE_VARINT) -- WriteUInt32NoTagToArray -- WriteVarint32ToArray  -> 8位编码 
+读取uint32 -> ReadPrimitive<uint32,TYPE_UINT32> -- ReadVarint32(uint32*)8位编码读取方式||ReadVarint32FromArray 
+
+写入sint32 -> WriteTag(field_number<<3|WIRETYPE_VARINT) -- WriteSInt32NoTagToArray -- WriteVarint32ToArray((ZigZagEncode32()))  -> 8位编码 
+读取sint32 -> ReadPrimitive<int32,TYPE_SINT32>  -- ReadVarint32(uint32*)8位编码读取方式||ReadVarint32FromArray -- ZigZagDecode32()
+
+写入int64  -> WriteTag(field_number<<3|WIRETYPE_VARINT) -- WriteInt64NoTagToArray -- WriteVarint64ToArray -> 8位编码
+读取int64  -> ReadPrimitive<int64,TYPE_INT64> -- ReadVarint64(uint64*)8位编码读取方式 ||ReadVarint64FromArray 
+
+写入uint64 -> WriteTag(field_number<<3|WIRETYPE_VARINT) -- WriteUInt64NoTagToArray -- WriteVarint64ToArray -> 8位编码
+读取uint64 -> ReadPrimitive<uint64,TYPE_UINT64> -- ReadVarint64(uint64*)8位编码读取方式 ||ReadVarint64FromArray 
+
+写入sint64 -> WriteTag(field_number<<3|WIRETYPE_VARINT) -- WriteSInt64NoTagToArray -- WriteVarint64ToArray(ZigZagEncode64()) -> 8位编码
+读取sint64 -> ReadPrimitive<int64,TYPE_SUINT64> -- ReadVarint64(uint64*)8位编码读取方式 ||ReadVarint64FromArray -- ZigZagDecode64()
+
+写入float  -> WriteTag(field_number<<3|WIRETYPE_FIXED32) -- WriteLittleEndian32ToArray(EncodeFloat(float)) -- WriteLittleEndian32ToArray(uint32) -> 内存拷贝
+读取float  -> ReadPrimitive<float|TYPE_FLOAT> -- ReadLittleEndian32(uint32*) -- ReadLittleEndian32FromArray()内存拷贝 -- DecodeFloat(uint32)
+
+写入double -> WriteTag(field_number<<3|WIRETYPE_FIXED64) -- WriteLittleEndian64ToArray(EncodeDouble(double)) -- WriteLittleEndian64ToArray(uint64) -> 内存拷贝
+读取double -> ReadPrimitive<double|TYPE_DOUBLE> -- ReadLittleEndian64(uint64*) -- ReadLittleEndian64FromArray()内存拷贝 -- DecodeDouble(uint64)
+
+
+Repeated Field （原生类型）
+	写入 如果packed = false 循环写入单个元素，WriteTag 类型对应的写方法； packed = true  WriteTag(field_number<<3|WIRETYPE_LENGTH_DELIMITED) -- 写入元素总数据长度 -- 以此写入单个元素(类型对应的写方法)
+	读取 判断是packed值(通过位运算) 如果为true，； 如果为false，循环读取元素值
+	对应自定义消息，packed只能为false，以此写入元素，WriteTag<field_number<<3|WIRETYPE_LENGTH_DELIMITED> -- cacheSize -- 写入自定义消息
+	
+	
