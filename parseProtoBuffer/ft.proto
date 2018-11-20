@@ -29,9 +29,9 @@ message filed7{
 
 message top{
 	repeated double f1 = 1;
- filed2 f2 = 2;
-repeated sint64 f3 = 3;//255或者-128
-repeated double f5 = 5;
- filed7 f7 = 7;
-repeated uint32 f8 = 8;
+ //filed2 f2 = 2;
+	repeated sint64 f3 = 3;//255或者-128
+	repeated double f5 = 5;
+ //filed7 f7 = 7;
+	repeated uint32 f8 = 8;
 }

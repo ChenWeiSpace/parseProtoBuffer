@@ -13,6 +13,9 @@ public:
 
 	bool readIo(std::istream & is);
 
+	void paserUnknow(std::istream & is, std::ostream & os);
+
+	void readGoogleTitle();
 };
 typedef std::shared_ptr<parseTool> parseToolPtr;
 #endif // parseTool_h__

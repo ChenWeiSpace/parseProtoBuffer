@@ -7,6 +7,10 @@
 #include <google/protobuf/message_lite.h>
 #include <google/protobuf/wire_format_lite.h>
 #include "AbstractMessage.h"
+#include <google/protobuf/descriptor.pb.h>
+#include "../../../protobuf-master/src/google/protobuf/dynamic_message.h"
+#include "../../../protobuf-master/src/google/protobuf/text_format.h"
+#include "ft.pb.h"
 parseTool::parseTool()
 {
 }
@@ -43,4 +47,56 @@ bool parseTool::readFile(std::string  fileName)
 		return readIo(f);
 	}
 	return false;
+}
+
+void parseTool::paserUnknow(std::istream & is, std::ostream & os)
+{
+	google::protobuf::DescriptorPool pool;
+	google::protobuf::FileDescriptorProto file;
+	file.set_name("empty_message.proto");
+	file.add_message_type()->set_name("EmptyMessage");
+	if (pool.BuildFile(file))
+	{
+		std::string codec_type_ = "EmptyMessage";
+		const google::protobuf::Descriptor* type = pool.FindMessageTypeByName(codec_type_);
+		if (type != NULL) {
+			google::protobuf::DynamicMessageFactory dynamic_factory(&pool);
+			std::unique_ptr<google::protobuf::Message> message(dynamic_factory.GetPrototype(type)->New());
+			google::protobuf::io::IstreamInputStream in(&is);
+			if (!message->ParsePartialFromZeroCopyStream(&in))
+			{
+				os << "Failed to parse input." << std::endl;
+			}
+
+			if (!message->IsInitialized()) {
+				os << "warning:  Input message is missing required fields:  "
+					<< message->InitializationErrorString() << std::endl;
+			}
+			google::protobuf::io::OstreamOutputStream out(&os);
+			if (!google::protobuf::TextFormat::Print(*message, &out)) {
+				os << "output: I/O error." << std::endl;
+				return;
+			}
+		}
+	}
+	os.flush();
+}
+
+void parseTool::readGoogleTitle()
+{
+	std::string str = "C:\\Users\\Administrator\\Desktop\\asd\\f";
+	std::fstream fs(str+".txt", std::ios_base::in | std::ios_base::binary);
+	std::fstream os(str+".dec", std::ios_base::out | std::ios_base::binary | std::ios_base::trunc);
+	Console::top * t = new Console::top;
+	t->ParseFromIstream(&fs);
+	auto reflection = t->GetReflection();
+	const google::protobuf::UnknownFieldSet & unField = reflection->GetUnknownFields(*t);
+	for ( int i =0;i < unField.field_count();++i)
+	{
+		unField.field(i);
+	}
+	google::protobuf::io::OstreamOutputStream out(&os);
+	google::protobuf::TextFormat::Print(*t, &out);
+	
+	int a = 0;
 }

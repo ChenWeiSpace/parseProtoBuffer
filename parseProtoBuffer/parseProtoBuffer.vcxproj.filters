@@ -30,6 +30,9 @@
     <ClInclude Include="protoBufferDeclear.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ft.pb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -44,13 +47,16 @@
     <ClCompile Include="AbstractMessage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ft.pb.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="wirteOrder.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ft.proto">
+    <CustomBuild Include="ft.proto">
       <Filter>头文件</Filter>
-    </None>
+    </CustomBuild>
   </ItemGroup>
 </Project>
