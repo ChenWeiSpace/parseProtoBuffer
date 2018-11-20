@@ -44,6 +44,9 @@ public:
 
 	AbstractField();
 	~AbstractField();
+
+	void setName(std::string name);
+	std::string getName();
 public:
 	int fileNumber;
 	FileValue val;
@@ -56,6 +59,8 @@ public:
 	IntArray  _valArray;
 	FLoatArray _fArray;
 	DoubleArray _dArray;
+
+	std::string _name;
 };
 typedef std::shared_ptr<AbstractField> AbstractFieldPtr;
 

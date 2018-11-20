@@ -25,7 +25,7 @@ bool parseTool::readIo(std::string & str)
 bool parseTool::readIo(std::istream & is)
 {
 	AbstractMessagePtr msg = std::make_shared<AbstractMessage>();
-
+	msg->setName("f20");
 	google::protobuf::io::IstreamInputStream inputStream(&is);
 	google::protobuf::io::CodedInputStream input(&inputStream);
 	

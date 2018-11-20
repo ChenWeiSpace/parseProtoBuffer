@@ -4,6 +4,7 @@
 #include <google/protobuf/message_lite.h>
 #include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/wire_format_lite_inl.h>
+#include <fstream>
 #include <sstream>
 #include "AbstractMessage.h"
 
@@ -17,6 +18,16 @@ AbstractField::AbstractField()
 AbstractField::~AbstractField()
 {
 
+}
+
+void AbstractField::setName(std::string name)
+{
+	_name = name;
+}
+
+std::string AbstractField::getName()
+{
+	return _name;
 }
 
 AbstractMessage::AbstractMessage()
@@ -68,6 +79,26 @@ bool AbstractMessage::paresFromStream(google::protobuf::io::CodedInputStream* in
 		}
 		else if (war == google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED)
 		{
+			{
+				std::string str;
+				if (::google::protobuf::internal::WireFormatLite::ReadBytes(
+					input, &str))
+				{
+					if (str.size())
+					{
+						std::string fileName = this->getName() + "_field_" + std::to_string(filedNumber) + "_size_" + std::to_string(str.size());
+						std::fstream strm(fileName, std::ios_base::out | std::ios_base::binary | std::ios_base::trunc);
+						if (strm.is_open())
+						{
+							strm << str;
+							strm.close();
+							continue;
+						}
+					}
+				}
+			}
+
+			continue;
 			std::string str;
 			if (::google::protobuf::internal::WireFormatLite::ReadString(
 				input, &str))
