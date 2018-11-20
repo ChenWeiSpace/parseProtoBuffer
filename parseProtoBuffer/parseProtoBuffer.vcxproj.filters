@@ -48,4 +48,9 @@
   <ItemGroup>
     <Text Include="wirteOrder.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ft.proto">
+      <Filter>头文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>

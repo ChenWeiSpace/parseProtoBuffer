@@ -173,6 +173,9 @@
   <ItemGroup>
     <Text Include="wirteOrder.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ft.proto" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
