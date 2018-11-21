@@ -168,6 +168,28 @@ class filed26 : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
+  // repeated bytes f1 = 1;
+  int f1_size() const;
+  void clear_f1();
+  static const int kF1FieldNumber = 1;
+  const ::std::string& f1(int index) const;
+  ::std::string* mutable_f1(int index);
+  void set_f1(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_f1(int index, ::std::string&& value);
+  #endif
+  void set_f1(int index, const char* value);
+  void set_f1(int index, const void* value, size_t size);
+  ::std::string* add_f1();
+  void add_f1(const ::std::string& value);
+  #if LANG_CXX11
+  void add_f1(::std::string&& value);
+  #endif
+  void add_f1(const char* value);
+  void add_f1(const void* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField<::std::string>& f1() const;
+  ::google::protobuf::RepeatedPtrField<::std::string>* mutable_f1();
+
   // int32 f2 = 2;
   void clear_f2();
   static const int kF2FieldNumber = 2;
@@ -185,6 +207,7 @@ class filed26 : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField<::std::string> f1_;
   ::google::protobuf::int32 f2_;
   ::google::protobuf::int32 f3_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -286,17 +309,27 @@ class filed2 : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 
   // accessors -------------------------------------------------------
 
-  // repeated uint32 f1 = 1;
+  // repeated bytes f1 = 1;
   int f1_size() const;
   void clear_f1();
   static const int kF1FieldNumber = 1;
-  ::google::protobuf::uint32 f1(int index) const;
-  void set_f1(int index, ::google::protobuf::uint32 value);
-  void add_f1(::google::protobuf::uint32 value);
-  const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-      f1() const;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-      mutable_f1();
+  const ::std::string& f1(int index) const;
+  ::std::string* mutable_f1(int index);
+  void set_f1(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_f1(int index, ::std::string&& value);
+  #endif
+  void set_f1(int index, const char* value);
+  void set_f1(int index, const void* value, size_t size);
+  ::std::string* add_f1();
+  void add_f1(const ::std::string& value);
+  #if LANG_CXX11
+  void add_f1(::std::string&& value);
+  #endif
+  void add_f1(const char* value);
+  void add_f1(const void* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField<::std::string>& f1() const;
+  ::google::protobuf::RepeatedPtrField<::std::string>* mutable_f1();
 
   // repeated uint32 f3 = 3;
   int f3_size() const;
@@ -378,8 +411,7 @@ class filed2 : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > f1_;
-  mutable std::atomic<int> _f1_cached_byte_size_;
+  ::google::protobuf::RepeatedPtrField<::std::string> f1_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > f3_;
   mutable std::atomic<int> _f3_cached_byte_size_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > f7_;
@@ -699,6 +731,15 @@ class top : public ::google::protobuf::Message /* @@protoc_insertion_point(class
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_f8();
 
+  // .Console.filed2 f2 = 2;
+  bool has_f2() const;
+  void clear_f2();
+  static const int kF2FieldNumber = 2;
+  const ::Console::filed2& f2() const;
+  ::Console::filed2* release_f2();
+  ::Console::filed2* mutable_f2();
+  void set_allocated_f2(::Console::filed2* f2);
+
   // @@protoc_insertion_point(class_scope:Console.top)
  private:
   class HasBitSetters;
@@ -712,6 +753,7 @@ class top : public ::google::protobuf::Message /* @@protoc_insertion_point(class
   mutable std::atomic<int> _f5_cached_byte_size_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > f8_;
   mutable std::atomic<int> _f8_cached_byte_size_;
+  ::Console::filed2* f2_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ft_2eproto;
 };
@@ -725,6 +767,75 @@ class top : public ::google::protobuf::Message /* @@protoc_insertion_point(class
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
 // filed26
+
+// repeated bytes f1 = 1;
+inline int filed26::f1_size() const {
+  return f1_.size();
+}
+inline void filed26::clear_f1() {
+  f1_.Clear();
+}
+inline const ::std::string& filed26::f1(int index) const {
+  // @@protoc_insertion_point(field_get:Console.filed26.f1)
+  return f1_.Get(index);
+}
+inline ::std::string* filed26::mutable_f1(int index) {
+  // @@protoc_insertion_point(field_mutable:Console.filed26.f1)
+  return f1_.Mutable(index);
+}
+inline void filed26::set_f1(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:Console.filed26.f1)
+  f1_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void filed26::set_f1(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:Console.filed26.f1)
+  f1_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void filed26::set_f1(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  f1_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:Console.filed26.f1)
+}
+inline void filed26::set_f1(int index, const void* value, size_t size) {
+  f1_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:Console.filed26.f1)
+}
+inline ::std::string* filed26::add_f1() {
+  // @@protoc_insertion_point(field_add_mutable:Console.filed26.f1)
+  return f1_.Add();
+}
+inline void filed26::add_f1(const ::std::string& value) {
+  f1_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:Console.filed26.f1)
+}
+#if LANG_CXX11
+inline void filed26::add_f1(::std::string&& value) {
+  f1_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:Console.filed26.f1)
+}
+#endif
+inline void filed26::add_f1(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  f1_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:Console.filed26.f1)
+}
+inline void filed26::add_f1(const void* value, size_t size) {
+  f1_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:Console.filed26.f1)
+}
+inline const ::google::protobuf::RepeatedPtrField<::std::string>&
+filed26::f1() const {
+  // @@protoc_insertion_point(field_list:Console.filed26.f1)
+  return f1_;
+}
+inline ::google::protobuf::RepeatedPtrField<::std::string>*
+filed26::mutable_f1() {
+  // @@protoc_insertion_point(field_mutable_list:Console.filed26.f1)
+  return &f1_;
+}
 
 // int32 f2 = 2;
 inline void filed26::clear_f2() {
@@ -758,31 +869,70 @@ inline void filed26::set_f3(::google::protobuf::int32 value) {
 
 // filed2
 
-// repeated uint32 f1 = 1;
+// repeated bytes f1 = 1;
 inline int filed2::f1_size() const {
   return f1_.size();
 }
 inline void filed2::clear_f1() {
   f1_.Clear();
 }
-inline ::google::protobuf::uint32 filed2::f1(int index) const {
+inline const ::std::string& filed2::f1(int index) const {
   // @@protoc_insertion_point(field_get:Console.filed2.f1)
   return f1_.Get(index);
 }
-inline void filed2::set_f1(int index, ::google::protobuf::uint32 value) {
-  f1_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Console.filed2.f1)
+inline ::std::string* filed2::mutable_f1(int index) {
+  // @@protoc_insertion_point(field_mutable:Console.filed2.f1)
+  return f1_.Mutable(index);
 }
-inline void filed2::add_f1(::google::protobuf::uint32 value) {
-  f1_.Add(value);
+inline void filed2::set_f1(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:Console.filed2.f1)
+  f1_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void filed2::set_f1(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:Console.filed2.f1)
+  f1_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void filed2::set_f1(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  f1_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:Console.filed2.f1)
+}
+inline void filed2::set_f1(int index, const void* value, size_t size) {
+  f1_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:Console.filed2.f1)
+}
+inline ::std::string* filed2::add_f1() {
+  // @@protoc_insertion_point(field_add_mutable:Console.filed2.f1)
+  return f1_.Add();
+}
+inline void filed2::add_f1(const ::std::string& value) {
+  f1_.Add()->assign(value);
   // @@protoc_insertion_point(field_add:Console.filed2.f1)
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+#if LANG_CXX11
+inline void filed2::add_f1(::std::string&& value) {
+  f1_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:Console.filed2.f1)
+}
+#endif
+inline void filed2::add_f1(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  f1_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:Console.filed2.f1)
+}
+inline void filed2::add_f1(const void* value, size_t size) {
+  f1_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:Console.filed2.f1)
+}
+inline const ::google::protobuf::RepeatedPtrField<::std::string>&
 filed2::f1() const {
   // @@protoc_insertion_point(field_list:Console.filed2.f1)
   return f1_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+inline ::google::protobuf::RepeatedPtrField<::std::string>*
 filed2::mutable_f1() {
   // @@protoc_insertion_point(field_mutable_list:Console.filed2.f1)
   return &f1_;
@@ -1159,6 +1309,57 @@ inline ::google::protobuf::RepeatedField< double >*
 top::mutable_f1() {
   // @@protoc_insertion_point(field_mutable_list:Console.top.f1)
   return &f1_;
+}
+
+// .Console.filed2 f2 = 2;
+inline bool top::has_f2() const {
+  return this != internal_default_instance() && f2_ != NULL;
+}
+inline void top::clear_f2() {
+  if (GetArenaNoVirtual() == NULL && f2_ != NULL) {
+    delete f2_;
+  }
+  f2_ = NULL;
+}
+inline const ::Console::filed2& top::f2() const {
+  const ::Console::filed2* p = f2_;
+  // @@protoc_insertion_point(field_get:Console.top.f2)
+  return p != NULL ? *p : *reinterpret_cast<const ::Console::filed2*>(
+      &::Console::_filed2_default_instance_);
+}
+inline ::Console::filed2* top::release_f2() {
+  // @@protoc_insertion_point(field_release:Console.top.f2)
+  
+  ::Console::filed2* temp = f2_;
+  f2_ = NULL;
+  return temp;
+}
+inline ::Console::filed2* top::mutable_f2() {
+  
+  if (f2_ == NULL) {
+    auto* p = CreateMaybeMessage<::Console::filed2>(GetArenaNoVirtual());
+    f2_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:Console.top.f2)
+  return f2_;
+}
+inline void top::set_allocated_f2(::Console::filed2* f2) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete f2_;
+  }
+  if (f2) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      f2 = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, f2, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  f2_ = f2;
+  // @@protoc_insertion_point(field_set_allocated:Console.top.f2)
 }
 
 // repeated sint64 f3 = 3;

@@ -81,10 +81,35 @@ void parseTool::paserUnknow(std::istream & is, std::ostream & os)
 	}
 	os.flush();
 }
+void paserFile2(std::string & mem)
+{
+	std::stringstream strem(mem);
+	Console::filed2 * t = new Console::filed2;
+	t->ParseFromIstream(&strem);
+	auto reflection = t->GetReflection();
+	const google::protobuf::UnknownFieldSet & unField = reflection->GetUnknownFields(*t);
+	for (int i = 0; i < unField.field_count(); ++i)
+	{
+
+	}
+}
+
+void paserFile7(std::string & mem)
+{
+	std::stringstream strem(mem);
+	Console::filed7 * t = new Console::filed7;
+	t->ParseFromIstream(&strem);
+	auto reflection = t->GetReflection();
+	const google::protobuf::UnknownFieldSet & unField = reflection->GetUnknownFields(*t);
+	for (int i = 0; i < unField.field_count(); ++i)
+	{
+
+	}
+}
 
 void parseTool::readGoogleTitle()
 {
-	std::string str = "C:\\Users\\Administrator\\Desktop\\asd\\f";
+	std::string str = "C:\\Users\\chenwei\\Desktop\\temp\\zip\\f";
 	std::fstream fs(str+".txt", std::ios_base::in | std::ios_base::binary);
 	std::fstream os(str+".dec", std::ios_base::out | std::ios_base::binary | std::ios_base::trunc);
 	Console::top * t = new Console::top;
@@ -93,7 +118,15 @@ void parseTool::readGoogleTitle()
 	const google::protobuf::UnknownFieldSet & unField = reflection->GetUnknownFields(*t);
 	for ( int i =0;i < unField.field_count();++i)
 	{
-		unField.field(i);
+		const google::protobuf::UnknownField& fie = unField.field(i);
+		if ( fie.number_ == 2)
+		{
+			paserFile2(*(fie.data_.length_delimited_.string_value_));
+		}
+		else if (fie.number_ == 7)
+		{
+			paserFile7(*(fie.data_.length_delimited_.string_value_));
+		}
 	}
 	google::protobuf::io::OstreamOutputStream out(&os);
 	google::protobuf::TextFormat::Print(*t, &out);
